@@ -6,6 +6,44 @@
 # to see the world.
 
 
+class Rect:
+    ''' 
+    Rects will exist on the map in order to manage regions that
+    represent rooms. They are also for checking to see if rooms
+    intersect when being generated and placed on the map
+    '''
+
+    def __init__(self, coords, size):
+        '''
+        coords is a tuple containing the top left x, y coordinates
+        of the rect. size is a tuple containing the height and width
+        of the rect.
+        '''
+        self.x1, self.y1 = coords
+        self.w, self.h = size
+        self.x2 = self.x1 + self.w
+        self.y2 = self.y1 + self.h
+
+    @property
+    def center(self):
+        ''' 
+        The coordinates of the center of the rectangle in order
+        to create tunneling targets for connecting rects together.
+        '''
+        center_x = int((self.x1 + self.x2) / 2)
+        center_y = int((self.y1 + self.y2) / 2)
+
+        return (center_x, center_y)
+
+    def rect_intersects(self, target):
+        '''
+        Returns true if the rects intersect on both the x and y plane.
+        '''
+        intersect = self.x1 <= target.x2 and self.x2 >= target.x1 and self.y1 <= target.y2 and self.y2 <= target.y1
+
+        return intersect
+
+
 class Room:
     def __init__(self, sector_type, x, y):
         self.sector_type = sector_type
@@ -53,6 +91,12 @@ class World:
             for j in range(size_y):
                 self.grid[i][j] = 1
 
+        # TODO Loop some amount of times
+        # TODO create a new rect
+        # TODO see if rect intersects
+        # TODO place the rect if it doesnt
+        # TODO place the tunnel between placed room and last placed rect.
+        # TODO save location of most recently placed rect.
 
     def print_rooms(self):
         '''
