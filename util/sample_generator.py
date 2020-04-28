@@ -1,9 +1,4 @@
-# Sample Python code that can be used to generate rooms in
-# a zig-zag pattern.
-#
-# You can modify generate_rooms() to create your own
-# procedural generation algorithm and use print_rooms()
-# to see the world.
+import random
 
 
 class Rect:
@@ -35,7 +30,7 @@ class Rect:
 
         return (center_x, center_y)
 
-    def rect_intersects(self, target):
+    def intersects(self, target):
         '''
         Returns true if the rects intersect on both the x and y plane.
         '''
@@ -80,20 +75,63 @@ class World:
         self.grid = None
         self.width = 0
         self.height = 0
+        self.max_regions = 10
+        self.max_region_size = 7
+        self.min_region_size = 3
+
+    def draw_region(self, region):
+        for x in range(region.x1, region.x2):
+            for y in range(region.y1, region.y2):
+                self.grid[x][y] = Room('floor', x, y)
+
+    def draw_tunnel(self, a, b):
+        x1, y1 = a
+        x2, y2 = b
+
+        for x in range(min(x1, x2), max(x1, x2) + 1):
+            self.grid[x][y1] = Room('floor', x, y1)
+
+        for y in range(min(y1, y2), max(y1, y2) + 1):
+            self.grid[x1][y] = Room('floor', x1, y)
 
     def generate_rooms(self, size_x, size_y, num_rooms):
 
         self.grid = []
         self.width = size_x
         self.height = size_y
-        for i in range(size_x):
+        for x in range(size_x):
             self.grid.append([])
-            for j in range(size_y):
-                self.grid[i][j] = 1
+            for y in range(size_y):
+                self.grid[i][j] = Room('wall', x, y)
 
-        # TODO Loop some amount of times
-        # TODO create a new rect
-        # TODO see if rect intersects
+        region_list = []
+        center_of_last_region = None
+
+        for i in range(self.max_regions):
+
+            w = random.randint(self.min_region_size, self.max_region_size)
+            h = random.randint(self.min_region_size, self.max_region_size)
+            x = random.randint(2, self.width-(w+2))
+            y = random.randint(2, self.height-(h+2))
+
+            region = Rect((x, y), (w, h))
+
+            placement_failed = False
+
+            for placed_region in region_list:
+                if region.intersects(placed_region):
+                    placement_failed = True
+                    break
+
+            if not placement_failed:
+
+                self.draw_region(region)
+
+                if center_of_last_region is not None:
+                    self.draw_tunnel(region.center, center_of_last_region)
+
+                center_of_last_region = region.center
+
         # TODO place the rect if it doesnt
         # TODO place the tunnel between placed room and last placed rect.
         # TODO save location of most recently placed rect.
