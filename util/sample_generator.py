@@ -70,39 +70,39 @@ class Room:
         return getattr(self, f"{direction}_to")
 
 
-class World:
+class Map:
     def __init__(self):
         self.grid = None
         self.width = 0
         self.height = 0
-        self.max_regions = 10
+        self.max_regions = 30
         self.max_region_size = 7
         self.min_region_size = 3
 
     def draw_region(self, region):
         for x in range(region.x1, region.x2):
             for y in range(region.y1, region.y2):
-                self.grid[x][y] = Room('floor', x, y)
+                self.grid[x][y] = Room('0', x, y)
 
     def draw_tunnel(self, a, b):
         x1, y1 = a
         x2, y2 = b
 
         for x in range(min(x1, x2), max(x1, x2) + 1):
-            self.grid[x][y1] = Room('floor', x, y1)
+            self.grid[x][y1] = Room('0', x, y1)
 
         for y in range(min(y1, y2), max(y1, y2) + 1):
-            self.grid[x1][y] = Room('floor', x1, y)
+            self.grid[x2][y] = Room('0', x1, y)
 
-    def generate_rooms(self, size_x, size_y, num_rooms):
+    def generate_rooms(self, size_x, size_y):
 
         self.grid = []
         self.width = size_x
         self.height = size_y
-        for x in range(size_x):
+        for x in range(0, self.width):
             self.grid.append([])
-            for y in range(size_y):
-                self.grid[i][j] = Room('wall', x, y)
+            for y in range(0, self.height):
+                self.grid[x].append(Room('1', x, y))
 
         region_list = []
         center_of_last_region = None
@@ -124,80 +124,27 @@ class World:
                     break
 
             if not placement_failed:
-
+                region_list.append(region)
                 self.draw_region(region)
-
                 if center_of_last_region is not None:
                     self.draw_tunnel(region.center, center_of_last_region)
 
                 center_of_last_region = region.center
 
-        # TODO place the rect if it doesnt
-        # TODO place the tunnel between placed room and last placed rect.
-        # TODO save location of most recently placed rect.
-
     def print_rooms(self):
         '''
-        Print the rooms in room_grid in ascii characters.
+        Print out rooms in a series of 1, 0 based on sector.
         '''
-
-        # Add top border
-        str = "# " * ((3 + self.width * 5) // 2) + "\n"
-
-        # The console prints top to bottom but our array is arranged
-        # bottom to top.
-        #
-        # We reverse it so it draws in the right direction.
-        reverse_grid = list(self.grid)  # make a copy of the list
-        reverse_grid.reverse()
-        for row in reverse_grid:
-            # PRINT NORTH CONNECTION ROW
-            str += "#"
-            for room in row:
-                if room is not None and room.n_to is not None:
-                    str += "  |  "
-                else:
-                    str += "     "
-            str += "#\n"
-            # PRINT ROOM ROW
-            str += "#"
-            for room in row:
-                if room is not None and room.w_to is not None:
-                    str += "-"
-                else:
-                    str += " "
-                if room is not None:
-                    str += f"{room.id}".zfill(3)
-                else:
-                    str += "   "
-                if room is not None and room.e_to is not None:
-                    str += "-"
-                else:
-                    str += " "
-            str += "#\n"
-            # PRINT SOUTH CONNECTION ROW
-            str += "#"
-            for room in row:
-                if room is not None and room.s_to is not None:
-                    str += "  |  "
-                else:
-                    str += "     "
-            str += "#\n"
-
-        # Add bottom border
-        str += "# " * ((3 + self.width * 5) // 2) + "\n"
-
-        # Print string
-        print(str)
+        string = ""
+        for i in range(0, self.width):
+            string += "\n"
+            for j in range(0, self.height):
+                string += f"{self.grid[i][j].sector_type}"
+        print(string)
 
 
-w = World()
-num_rooms = 44
-width = 8
-height = 7
-w.generate_rooms(width, height, num_rooms)
-w.print_rooms()
-
-
-print(
-    f"\n\nWorld\n  height: {height}\n  width: {width},\n  num_rooms: {num_rooms}\n")
+m = Map()
+width = 50
+height = 50
+m.generate_rooms(width, height)
+m.print_rooms()
