@@ -8,6 +8,12 @@ class Weapons(NamedEnum):
     The weapons class handles the weapon generation and each weapon will have attributes for style and finish.
     
     ===Attributes===
+    name: This attribute gives the weapon a str type name
+    
+    style_description: This attribute is a str that describes the style type associated with that weapon for players to inspect the item.
+    
+    finish_description: This attribute is a str that describes the finish type associated with that weapon for players to inspect the item.
+    
     style: This attribute defines the combat style as one of 3 types
         melee: This is the close range combat style. Melee attacks will deliver blows with the greatest accuracy/chance of landing blow(0.8)
         midrange: This is your midrange combat style. Midrange attacks will deliver blows with moderate accuracy/chance of landing blow(0.6)
@@ -20,6 +26,10 @@ class Weapons(NamedEnum):
         volcanic(rand): This finish will deliver a random amount of damage (light, medium, or heavy)
     '''
 
+    '''
+    Substitute " _ " with " " for item name
+    '''
+    
     #melee Weapons (close range combat)
     #light
     bronze_wrist_blades = auto()
