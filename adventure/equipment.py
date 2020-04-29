@@ -26,6 +26,9 @@ class  Finish_Description(Enum):
     volcanic = "This weapon has a volcanic finish. \nAttacking with a volcanic weapon is like Russian Roulette; \nYou may deliver a strong blow, or a weak one.\n May the odds be ever in your favor.\n"
 
 class Weapon(self):
+    '''
+    This
+    '''
     def __init__(self, name: str, style_description: str, finish_description: str, style: Style.melee, finish: finish.light)
         self.name = name
         self.style_description = random.choice(Finish)

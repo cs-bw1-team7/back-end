@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
+from items import Items
 import random
 import uuid
 
@@ -210,6 +211,8 @@ class Player(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     currentArea = models.IntegerField(default=0)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
+    #TODO: add inventory[] to player model
+    #TODO: add inventory_limit to player model
 
     def initialize(self):
         if self.currentRoom == 0:
@@ -222,6 +225,66 @@ class Player(models.Model):
         except Room.DoesNotExist:
             self.initialize()
             return self.room()
+    
+    #TODO: Update room object to initialize with item and pyt this func somewhere that makes sense
+    def add_item_to_room(self, item):  # Add capability to add items to room
+        '''
+        This will add random items to the rooms. 
+        '''
+        item.append(item)
+        
+        #This will throw an output to the player with the item they stumbled onto in their current room
+        if player.currentRoom != 0:
+        for i in player.currentRoom.items:
+            print(
+                "><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><"
+
+                f"\n\n *** You stumbled onto an item *** \n     {i.name}\n\n"
+
+                "><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><")
+    
+    #TODO: Finish funcs. for player inventory and move this func to better location
+    def get_inventory(self):
+    '''
+    Get's the players current inventory. Right now, Weapons are the only items players can add to their loot
+    '''
+
+        if len(self.inventory) > 0: # Check the length of the inventory list
+            for i in self.inventory: # Iterate over the list
+                print(
+                    f"\nYou are carrying: \n*{i.name}") # Print the items in the list
+        else:
+            print("You have nothing in your inventory.")
+
+    # Add item to inventory if space is available
+    # If inv is full print warning msg, else print conf msg, 
+    def add_to_inv(self, item):
+        '''
+        This adds the item to the players inventory. Inventory has a maximum capacity of 10 items. If the player
+        does not have <10 items in inventory, they will not be able to add the item until they drop an existing
+        item from inventory
+        '''
+        if len(self.inventory) >= self.inventory_limit:
+            print(f"\n\033[31m'WARNING: \033[39m'Unable to add {item} to inventory. \nYour inventory is full. Drop and item to free up space.")
+        elif item not in self.inventory and item in self.currentRoom.items:
+            self.inventory.append(item)
+            for i in self.inventory:
+                print(f"\n\n\n\033[32m'SUCCESS! \033[39m'ITEM: {i.name}\nACCURACY: {i.style_description}\nDAMAGE: {i.finish_description}\nFYI: Check your inventory at any time[i] then[Enter]<<<")
+        
+    # Remove item at given position
+    def remove_fr_inv(self, item):  # Add ability to drop item from player inventory
+        '''
+        This removes the item from the players inventory. 
+        '''
+
+        if item in self.inventory:
+            self.inventory.remove(item)
+            for i in self.inventory:
+                print(f"\n You dropped the {i.name}")
+                self.get_inventory()
+
+        else:
+            print(f"\n You don't have {i.name} in your inventory")
 
 
 @receiver(post_save, sender=User)

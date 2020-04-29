@@ -2,10 +2,10 @@ from enum import auto
 from .named_enum import NamedEnum
 from .equipment import (Weapon, Style, Finish, Style_Description, Finish_Description)
 
-class Weapons(NamedEnum):
+class Items(NamedEnum):
     '''
     ===Overview===
-    The weapons class handles the weapon generation and each weapon will have attributes for style and finish.
+    The Items class handles the weapon generation and each weapon will have attributes for style and finish.
     
     ===Attributes===
     name: This attribute gives the weapon a str type name
@@ -29,8 +29,8 @@ class Weapons(NamedEnum):
     '''
     Substitute " _ " with " " for item name
     '''
-    
-    #melee Weapons (close range combat)
+
+    #melee Items (close range combat)
     #light
     bronze_wrist_blades = auto()
     bronze_knuckles = auto()
@@ -67,7 +67,7 @@ class Weapons(NamedEnum):
     volcanic_war_hammer = auto()
     volcanic_whipping_chain = auto()
     
-    #midrange Weapons(midrange combat)
+    #midrange Items(midrange combat)
     #light
     bronze_arming_sword = auto()
     bronze_estoc = auto()
@@ -104,7 +104,7 @@ class Weapons(NamedEnum):
     volcanic_chain = auto()
     volcanic_morning_star = auto()
 
-    #projectile Weapons(long range combat)
+    #projectile Items(long range combat)
 
     #light
     bronze_shuriken = auto()
@@ -145,200 +145,200 @@ class Weapons(NamedEnum):
     weapons = {
         #melee
         #light
-        Weapons.bronze_wrist_blades: Weapon(
-            name=Weapons.bronze_wrist_blades.name,
+        Items.bronze_wrist_blades: Weapon(
+            name=Items.bronze_wrist_blades.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.light,
             style=Style.melee,
             finish=Finish.light),
         
-        Weapons.bronze_knuckles: Weapon(
-            name=Weapons.bronze_knuckles.name,
+        Items.bronze_knuckles: Weapon(
+            name=Items.bronze_knuckles.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.light,
             style=Style.melee,
             finish=Finish.light),
 
-        Weapons.bronze_knife: Weapon(
-            name=Weapons.bronze.knife.name,
+        Items.bronze_knife: Weapon(
+            name=Items.bronze.knife.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.light,
             style=Style.melee,
             finish=Finish.light),
 
-        Weapons.bronze_viking_halberd: Weapon(
-            name=Weapons.bronze_knuckles.name,
+        Items.bronze_viking_halberd: Weapon(
+            name=Items.bronze_knuckles.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.light,
             style=Style.melee,
             finish=Finish.light),
 
-        Weapons.bronze_rondel_dagger: Weapon(
-            name=Weapons.bronze_knuckles.name,
+        Items.bronze_rondel_dagger: Weapon(
+            name=Items.bronze_knuckles.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.light,
             style=Style.melee,
             finish=Finish.light),
 
-        Weapons.bronze_war_hammer: Weapon(
-            name=Weapons.war_hammer.name,
+        Items.bronze_war_hammer: Weapon(
+            name=Items.war_hammer.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.light,
             style=Style.melee,
             finish=Finish.light),
 
-        Weapons.bronze_whipping_chain: Weapon(
-            name=Weapons.whipping_chain.name,
+        Items.bronze_whipping_chain: Weapon(
+            name=Items.whipping_chain.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.light,
             style=Style.melee,
             finish=Finish.light),
         
         #medium
-        Weapons.iron_wrist_blades: Weapon(
-            name=Weapons.iron_wrist_blades.name,
+        Items.iron_wrist_blades: Weapon(
+            name=Items.iron_wrist_blades.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.medium,
             style=Style.melee,
             finish=Finish.medium),
 
-        Weapons.iron_knuckles: Weapon(
-            name=Weapons.iron_knuckles.name,
+        Items.iron_knuckles: Weapon(
+            name=Items.iron_knuckles.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.medium,
             style=Style.melee,
             finish=Finish.medium),
 
-        Weapons.iron_knife: Weapon(
-            name=Weapons.iron_knife.name,
+        Items.iron_knife: Weapon(
+            name=Items.iron_knife.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.medium,
             style=Style.melee,
             finish=Finish.medium),
 
-        Weapons.iron_viking_halberd: Weapon(
-            name=Weapons.iron_knuckles.name,
+        Items.iron_viking_halberd: Weapon(
+            name=Items.iron_knuckles.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.medium,
             style=Style.melee,
             finish=Finish.medium),
 
-        Weapons.iron_rondel_dagger: Weapon(
-            name=Weapons.iron_rondel_dagger.name,
+        Items.iron_rondel_dagger: Weapon(
+            name=Items.iron_rondel_dagger.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.medium,
             style=Style.melee,
             finish=Finish.medium),
 
-        Weapons.iron_war_hammer: Weapon(
-            name=Weapons.iron_knuckles.name,
+        Items.iron_war_hammer: Weapon(
+            name=Items.iron_knuckles.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.medium,
             style=Style.melee,
             finish=Finish.medium),
 
-        Weapons.iron_whipping_chain: Weapon(
-            name=Weapons.iron_knuckles.name,
+        Items.iron_whipping_chain: Weapon(
+            name=Items.iron_knuckles.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.medium,
             style=Style.melee,
             finish=Finish.medium),
 
         #heavy
-        Weapons.steel_wrist_blades: Weapon(
-            name=Weapons.iron_knuckles.name,
+        Items.steel_wrist_blades: Weapon(
+            name=Items.iron_knuckles.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.heavy,
             style=Style.melee,
             finish=Finish.heavy),
 
-        Weapons.steel_knuckles: Weapon(
-            name=Weapons.steel_knuckles.name,
+        Items.steel_knuckles: Weapon(
+            name=Items.steel_knuckles.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.heavy,
             style=Style.melee,
             finish=Finish.heavy),
 
-        Weapons.steel_knife: Weapon(
-            name=Weapons.steel_knife.name,
+        Items.steel_knife: Weapon(
+            name=Items.steel_knife.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.heavy,
             style=Style.melee,
             finish=Finish.heavy),
 
-        Weapons.steel_viking_halberd: Weapon(
-            name=Weapons.steel_viking_halberd.name,
+        Items.steel_viking_halberd: Weapon(
+            name=Items.steel_viking_halberd.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.heavy,
             style=Style.melee,
             finish=Finish.heavy),
 
-        Weapons.steel_rondel_dagger: Weapon(
-            name=Weapons.iron_knuckles.name,
+        Items.steel_rondel_dagger: Weapon(
+            name=Items.iron_knuckles.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.heavy,
             style=Style.melee,
             finish=Finish.heavy),
 
-        Weapons.steel_war_hammer: Weapon(
-            name=Weapons.steel_war_hammer.name,
+        Items.steel_war_hammer: Weapon(
+            name=Items.steel_war_hammer.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.heavy,
             style=Style.melee,
             finish=Finish.heavy),
 
-        Weapons.steel_whipping_chain: Weapon(
-            name=Weapons.iron_knuckles.name,
+        Items.steel_whipping_chain: Weapon(
+            name=Items.iron_knuckles.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.heavy,
             style=Style.melee,
             finish=Finish.heavy),
 
         #volcanic
-        Weapons.volcanic_wrist_blades: Weapon(
-            name=Weapons.volcanic_wrist_blades.name,
+        Items.volcanic_wrist_blades: Weapon(
+            name=Items.volcanic_wrist_blades.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.volcanic,
             style=Style.melee,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_knuckles: Weapon(
-            name=Weapons.iron_knuckles.name,
+        Items.volcanic_knuckles: Weapon(
+            name=Items.iron_knuckles.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.volcanic,
             style=Style.melee,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_knife: Weapon(
-            name=Weapons.volcanic_knife.name,
+        Items.volcanic_knife: Weapon(
+            name=Items.volcanic_knife.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.volcanic,
             style=Style.melee,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_viking_halberd: Weapon(
-            name=Weapons.volcanic_viking_halberd.name,
+        Items.volcanic_viking_halberd: Weapon(
+            name=Items.volcanic_viking_halberd.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.volcanic,
             style=Style.melee,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_rondel_dagger: Weapon(
-            name=Weapons.volcanic_rondel_dagger.name,
+        Items.volcanic_rondel_dagger: Weapon(
+            name=Items.volcanic_rondel_dagger.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.volcanic,
             style=Style.melee,
             finish=Finish.volcanic),
         
-        Weapons.volcanic_war_hammer: Weapon(
-            name=Weapons.volcanic_war_hammer.name,
+        Items.volcanic_war_hammer: Weapon(
+            name=Items.volcanic_war_hammer.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.volcanic,
             style=Style.melee,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_whipping_chain: Weapon(
-            name=Weapons.iron_knuckles.name,
+        Items.volcanic_whipping_chain: Weapon(
+            name=Items.iron_knuckles.name,
             style_description=Style_Description.melee,
             finish_description=Finish_Description.volcanic,
             style=Style.melee,
@@ -346,200 +346,200 @@ class Weapons(NamedEnum):
         
         #midrange
         #light
-        Weapons.bronze_arming_sword: Weapon(
-            name=Weapons.bronze_arming_sword.name,
+        Items.bronze_arming_sword: Weapon(
+            name=Items.bronze_arming_sword.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.light,
             style=Style.midrange,
             finish=Finish.light),
 
-        Weapons.bronze_estoc: Weapon(
-            name=Weapons.bronze_estoc.name,
+        Items.bronze_estoc: Weapon(
+            name=Items.bronze_estoc.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.light,
             style=Style.midrange,
             finish=Finish.light),
         
-        Weapons.bronze_katana: Weapon(
-            name=Weapons.bronze_katana.name,
+        Items.bronze_katana: Weapon(
+            name=Items.bronze_katana.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.light,
             style=Style.midrange,
             finish=Finish.light),
 
-        Weapons.bronze_long_sword: Weapon(
-            name=Weapons.bronze_long_sword.name,
+        Items.bronze_long_sword: Weapon(
+            name=Items.bronze_long_sword.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.light,
             style=Style.midrange,
             finish=Finish.light),
 
-        Weapons.bronze_rapier: Weapon(
-            name=Weapons.bronze_rapier.name,
+        Items.bronze_rapier: Weapon(
+            name=Items.bronze_rapier.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.light,
             style=Style.midrange,
             finish=Finish.light),
 
-        Weapons.bronze_chain: Weapon(
-            name=Weapons.bronze_chain.name,
+        Items.bronze_chain: Weapon(
+            name=Items.bronze_chain.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.light,
             style=Style.midrange,
             finish=Finish.light),
 
-        Weapons.bronze_morning_star: Weapon(
-            name=Weapons.bronze_morning_star.name,
+        Items.bronze_morning_star: Weapon(
+            name=Items.bronze_morning_star.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.light,
             style=Style.midrange,
             finish=Finish.light),
         
         #medium
-        Weapons.iron_arming_sword: Weapon(
-            name=Weapons.iron_arming_sword.name,
+        Items.iron_arming_sword: Weapon(
+            name=Items.iron_arming_sword.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.medium,
             style=Style.midrange,
             finish=Finish.medium),
 
-        Weapons.iron_estoc: Weapon(
-            name=Weapons.iron_estoc.name,
+        Items.iron_estoc: Weapon(
+            name=Items.iron_estoc.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.medium,
             style=Style.midrange,
             finish=Finish.medium),
 
-        Weapons.iron_katana: Weapon(
-            name=Weapons.bronze_katana.name,
+        Items.iron_katana: Weapon(
+            name=Items.bronze_katana.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.medium,
             style=Style.midrange,
             finish=Finish.light),
 
-        Weapons.iron_long_sword: Weapon(
-            name=Weapons.iron_long_sword.name,
+        Items.iron_long_sword: Weapon(
+            name=Items.iron_long_sword.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.medium,
             style=Style.midrange,
             finish=Finish.medium),
 
-        Weapons.iron_rapier: Weapon(
-            name=Weapons.iron_rapier.name,
+        Items.iron_rapier: Weapon(
+            name=Items.iron_rapier.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.medium,
             style=Style.midrange,
             finish=Finish.medium),
 
-        Weapons.iron_chain: Weapon(
-            name=Weapons.iron_chain.name,
+        Items.iron_chain: Weapon(
+            name=Items.iron_chain.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.medium,
             style=Style.midrange,
             finish=Finish.medium),
 
-        Weapons.iron_morning_star: Weapon(
-            name=Weapons.iron_morning_star.name,
+        Items.iron_morning_star: Weapon(
+            name=Items.iron_morning_star.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.medium,
             style=Style.midrange,
             finish=Finish.medium),
         
         #heavy
-        Weapons.steel_arming_sword: Weapon(
-            name=Weapons.steel_arming_sword.name,
+        Items.steel_arming_sword: Weapon(
+            name=Items.steel_arming_sword.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.heavy,
             style=Style.midrange,
             finish=Finish.heavy),
 
-        Weapons.steel_estoc: Weapon(
-            name=Weapons.steel_estoc.name,
+        Items.steel_estoc: Weapon(
+            name=Items.steel_estoc.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.heavy,
             style=Style.midrange,
             finish=Finish.heavy),
 
-        Weapons.steel_katana: Weapon(
-            name=Weapons.bronze_katana.name,
+        Items.steel_katana: Weapon(
+            name=Items.bronze_katana.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.heavy,
             style=Style.midrange,
             finish=Finish.heavy),
 
-        Weapons.steel_long_sword: Weapon(
-            name=Weapons.steel_long_sword.name,
+        Items.steel_long_sword: Weapon(
+            name=Items.steel_long_sword.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.heavy,
             style=Style.midrange,
             finish=Finish.heavy),
 
-        Weapons.steel_rapier: Weapon(
-            name=Weapons.steel_rapier.name,
+        Items.steel_rapier: Weapon(
+            name=Items.steel_rapier.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.heavy,
             style=Style.midrange,
             finish=Finish.heavy),
 
-        Weapons.steel_chain: Weapon(
-            name=Weapons.steel_chain.name,
+        Items.steel_chain: Weapon(
+            name=Items.steel_chain.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.heavy,
             style=Style.midrange,
             finish=Finish.heavy),
 
-        Weapons.steel_morning_star: Weapon(
-            name=Weapons.steel_morning_star.name,
+        Items.steel_morning_star: Weapon(
+            name=Items.steel_morning_star.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.heavy,
             style=Style.midrange,
             finish=Finish.heavy),
         
         #volcanic
-        Weapons.volcanic_arming_sword: Weapon(
-            name=Weapons.volcanic_arming_sword.name,
+        Items.volcanic_arming_sword: Weapon(
+            name=Items.volcanic_arming_sword.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.volcanic,
             style=Style.midrange,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_estoc: Weapon(
-            name=Weapons.volcanic_estoc.name,
+        Items.volcanic_estoc: Weapon(
+            name=Items.volcanic_estoc.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.volcanic,
             style=Style.midrange,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_katana: Weapon(
-            name=Weapons.bronze_katana.name,
+        Items.volcanic_katana: Weapon(
+            name=Items.bronze_katana.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.volcanic,
             style=Style.midrange,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_long_sword: Weapon(
-            name=Weapons.volcanic_long_sword.name,
+        Items.volcanic_long_sword: Weapon(
+            name=Items.volcanic_long_sword.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.volcanic,
             style=Style.midrange,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_rapier: Weapon(
-            name=Weapons.volcanic_rapier.name,
+        Items.volcanic_rapier: Weapon(
+            name=Items.volcanic_rapier.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.volcanic,
             style=Style.midrange,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_chain: Weapon(
-            name=Weapons.volcanic_chain.name,
+        Items.volcanic_chain: Weapon(
+            name=Items.volcanic_chain.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.volcanic,
             style=Style.midrange,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_morning_star: Weapon(
-            name=Weapons.volcanic_morning_star.name,
+        Items.volcanic_morning_star: Weapon(
+            name=Items.volcanic_morning_star.name,
             style_description=Style_Description.midrange,
             finish_description=Finish_Description.volcanic,
             style=Style.midrange,
@@ -547,175 +547,175 @@ class Weapons(NamedEnum):
         
         #longrange
         #light
-        Weapons.bronze_shuriken: Weapon(
-            name=Weapons.bronze_shuriken.name,
+        Items.bronze_shuriken: Weapon(
+            name=Items.bronze_shuriken.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.light,
             style=Style.longrange,
             finish=Finish.light),
 
-        Weapons.bronze_nzappa_zap: Weapon(
-            name=Weapons.bronze_nzappa_zap.name,
+        Items.bronze_nzappa_zap: Weapon(
+            name=Items.bronze_nzappa_zap.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.light,
             style=Style.longrange,
             finish=Finish.light),
 
-        Weapons.bronze_longbow: Weapon(
-            name=Weapons.bronze_longbow.name,
+        Items.bronze_longbow: Weapon(
+            name=Items.bronze_longbow.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.light,
             style=Style.longrange,
             finish=Finish.light),
 
-        Weapons.bronze_crossbow: Weapon(
-            name=Weapons.bronze_crossbow.name,
+        Items.bronze_crossbow: Weapon(
+            name=Items.bronze_crossbow.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.light,
             style=Style.longrange,
             finish=Finish.light),
 
-        Weapons.bronze_byzantine_flamethrower: Weapon(
-            name=Weapons.bronze_byzantine_flamethrower.name,
+        Items.bronze_byzantine_flamethrower: Weapon(
+            name=Items.bronze_byzantine_flamethrower.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.light,
             style=Style.longrange,
             finish=Finish.light),
 
-        Weapons.bronze_musket: Weapon(
-            name=Weapons.bronze_musket.name,
+        Items.bronze_musket: Weapon(
+            name=Items.bronze_musket.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.light,
             style=Style.longrange,
             finish=Finish.light),
 
         #medium
-        Weapons.iron_shuriken: Weapon(
-            name=Weapons.iron_shuriken.name,
+        Items.iron_shuriken: Weapon(
+            name=Items.iron_shuriken.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.medium,
             style=Style.longrange,
             finish=Finish.medium),
 
-        Weapons.iron_nzappa_zap: Weapon(
-            name=Weapons.iron_nzappa_zap.name,
+        Items.iron_nzappa_zap: Weapon(
+            name=Items.iron_nzappa_zap.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.medium,
             style=Style.longrange,
             finish=Finish.medium),
 
-        Weapons.iron_longbow: Weapon(
-            name=Weapons.iron_longbow.name,
+        Items.iron_longbow: Weapon(
+            name=Items.iron_longbow.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.medium,
             style=Style.longrange,
             finish=Finish.medium),
 
-        Weapons.iron_crossbow: Weapon(
-            name=Weapons.iron_crossbow.name,
+        Items.iron_crossbow: Weapon(
+            name=Items.iron_crossbow.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.medium,
             style=Style.longrange,
             finish=Finish.medium)
 
-        Weapons.iron_byzantine_flamethrower: Weapon(
-            name=Weapons.iron_byzantine_flamethrower.name,
+        Items.iron_byzantine_flamethrower: Weapon(
+            name=Items.iron_byzantine_flamethrower.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.medium,
             style=Style.longrange,
             finish=Finish.medium)
 
-        Weapons.iron_musket: Weapon(
-            name=Weapons.iron_musket.name,
+        Items.iron_musket: Weapon(
+            name=Items.iron_musket.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.medium,
             style=Style.longrange,
             finish=Finish.medium),
 
         #heavy
-        Weapons.steel_shuriken: Weapon(
-            name=Weapons.steel_shuriken.name,
+        Items.steel_shuriken: Weapon(
+            name=Items.steel_shuriken.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.heavy,
             style=Style.longrange,
             finish=Finish.heavy),
 
-        Weapons.steel_nzappa_zap: Weapon(
-            name=Weapons.steel_nzappa_zap.name,
+        Items.steel_nzappa_zap: Weapon(
+            name=Items.steel_nzappa_zap.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.heavy,
             style=Style.longrange,
             finish=Finish.heavy),
 
-        Weapons.steel_longbow: Weapon(
-            name=Weapons.steel_longbow.name,
+        Items.steel_longbow: Weapon(
+            name=Items.steel_longbow.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.heavy,
             style=Style.longrange,
             finish=Finish.heavy),
 
-        Weapons.steel_crossbow: Weapon(
-            name=Weapons.steel_crossbow.name,
+        Items.steel_crossbow: Weapon(
+            name=Items.steel_crossbow.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.heavy,
             style=Style.longrange,
             finish=Finish.heavy),
 
-        Weapons.steel_byzantine_flamethrower: Weapon(
-            name=Weapons.steel_byzantine_flamethrower.name,
+        Items.steel_byzantine_flamethrower: Weapon(
+            name=Items.steel_byzantine_flamethrower.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.heavy,
             style=Style.longrange,
             finish=Finish.heavy),
 
-        Weapons.steel_musket: Weapon(
-            name=Weapons.steel_musket.name,
+        Items.steel_musket: Weapon(
+            name=Items.steel_musket.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.heavy,
             style=Style.longrange,
             finish=Finish.heavy),
         
         #volcanic
-        Weapons.volcanic_shuriken: Weapon(
-            name=Weapons.volcanic_shuriken.name,
+        Items.volcanic_shuriken: Weapon(
+            name=Items.volcanic_shuriken.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.volcanic,
             style=Style.longrange,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_nzappa_zap: Weapon(
-            name=Weapons.volcanic_nzappa_zap.name,
+        Items.volcanic_nzappa_zap: Weapon(
+            name=Items.volcanic_nzappa_zap.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.volcanic,
             style=Style.longrange,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_longbow: Weapon(
-            name=Weapons.volcanic_longbow.name,
+        Items.volcanic_longbow: Weapon(
+            name=Items.volcanic_longbow.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.volcanic,
             style=Style.longrange
             finish=Finish.volcanic),
 
-        Weapons.volcanic_crossbow: Weapon(
-            name=Weapons.volcanic_crossbow.name,
+        Items.volcanic_crossbow: Weapon(
+            name=Items.volcanic_crossbow.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.volcanic,
             style=Style.longrange,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_byzantine_flamethrower: Weapon(
-            name=Weapons.volcanic_byzantine_flamethrower.name,
+        Items.volcanic_byzantine_flamethrower: Weapon(
+            name=Items.volcanic_byzantine_flamethrower.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.volcanic,
             style=Style.longrange,
             finish=Finish.volcanic),
 
-        Weapons.volcanic_musket: Weapon(
-            name=Weapons.volcanic_musket.name,
+        Items.volcanic_musket: Weapon(
+            name=Items.volcanic_musket.name,
             style_description=Style_Description.longrange,
             finish_description=Finish_Description.volcanic,
             style=Style.longrange,
             finish=Finish.volcanic)
-
+    }
         
