@@ -11,6 +11,7 @@ import json
 # instantiate pusher
 # pusher = Pusher(app_id=config('PUSHER_APP_ID'), key=config('PUSHER_KEY'), secret=config('PUSHER_SECRET'), cluster=config('PUSHER_CLUSTER'))
 
+
 @csrf_exempt
 @api_view(["GET"])
 def initialize(request):
@@ -20,48 +21,69 @@ def initialize(request):
     uuid = player.uuid
     room = player.room()
     players = room.playerNames(player_id)
-    return JsonResponse({'uuid': uuid, 'name':player.user.username, 'title':room.title, 'description':room.description, 'players':players}, safe=True)
+    return JsonResponse({'uuid': uuid, 'name': player.user.username, 'title': room.title, 'description': room.description, 'players': players}, safe=True)
+
+
+@api_view(["GET"])
+def area(request):
+    user = request.user
+    player = user.player
+    print(player.currentArea)
+    area = Area.objects.get(id=player.currentArea)
+    return JsonResponse({'width': area.width, 'height': area.height})
+
+
+@api_view(["GET"])
+def rooms(request):
+    player = request.user.player
+    rooms = Room.objects.filter(area=player.currentArea).values()
+    return JsonResponse({'data': list(rooms)})
+
+
+@api_view(["GET"])
+def room(request):
+    user = request.user
+    player = user.player
+    room = Room.objects.filter(
+        area=player.currentArea).get(x=player.current_x, y=player.current_y)
+    print(room)
+    return JsonResponse({'Area': room.area.id, 'x': room.x, 'y': room.y, 'passable': room.passable})
 
 
 # @csrf_exempt
 @api_view(["POST"])
 def move(request):
-    dirs={"n": "north", "s": "south", "e": "east", "w": "west"}
-    reverse_dirs = {"n": "south", "s": "north", "e": "west", "w": "east"}
-    player = request.user.player
-    player_id = player.id
-    player_uuid = player.uuid
-    data = json.loads(request.body)
-    direction = data['direction']
-    room = player.room()
-    nextRoomID = None
-    if direction == "n":
-        nextRoomID = room.n_to
-    elif direction == "s":
-        nextRoomID = room.s_to
-    elif direction == "e":
-        nextRoomID = room.e_to
-    elif direction == "w":
-        nextRoomID = room.w_to
-    if nextRoomID is not None and nextRoomID > 0:
-        nextRoom = Room.objects.get(id=nextRoomID)
-        player.currentRoom=nextRoomID
-        player.save()
-        players = nextRoom.playerNames(player_id)
-        currentPlayerUUIDs = room.playerUUIDs(player_id)
-        nextPlayerUUIDs = nextRoom.playerUUIDs(player_id)
-        # for p_uuid in currentPlayerUUIDs:
-        #     pusher.trigger(f'p-channel-{p_uuid}', u'broadcast', {'message':f'{player.user.username} has walked {dirs[direction]}.'})
-        # for p_uuid in nextPlayerUUIDs:
-        #     pusher.trigger(f'p-channel-{p_uuid}', u'broadcast', {'message':f'{player.user.username} has entered from the {reverse_dirs[direction]}.'})
-        return JsonResponse({'name':player.user.username, 'title':nextRoom.title, 'description':nextRoom.description, 'players':players, 'error_msg':""}, safe=True)
+    user = request.user
+    player = user.player
+    x = player.current_x
+    y = player.current_y
+    direction = request.data["direction"]
+    coord_shift = [0, 0]
+    if direction == 'north':
+        coord_shift[1] = 1
+    if direction == 'south':
+        coord_shift[1] = -1
+    if direction == 'east':
+        coord_shift[0] = 1
+    if direction == 'west':
+        coord_shift[0] = -1
+
+    new_x = coord_shift[1] + x
+    new_y = coord_shift[0] + y
+
+    target_room = Room.objects.filter(
+        area=player.currentArea).get(x=new_x, y=new_y)
+    if target_room.passable:
+        player.current_x = new_x
+        player.current_y = new_y
+
+        return JsonResponse({'name': player.user.username, 'room_x': target_room.x, 'room_y': target_room.y, 'error_msg': ""}, safe=True)
     else:
-        players = room.playerNames(player_id)
-        return JsonResponse({'name':player.user.username, 'title':room.title, 'description':room.description, 'players':players, 'error_msg':"You cannot move that way."}, safe=True)
+        return JsonResponse({'name': player.user.username, 'room_x': target_room.x, 'room_y': target_room.y, 'error_msg': "You cannot move that way."}, safe=True)
 
 
 @csrf_exempt
 @api_view(["POST"])
 def say(request):
     # IMPLEMENT
-    return JsonResponse({'error':"Not yet implemented"}, safe=True, status=500)
+    return JsonResponse({'error': "Not yet implemented"}, safe=True, status=500)
