@@ -226,6 +226,13 @@ class Player(models.Model):
             self.initialize()
             return self.room()
     
+    #TODO: Player health
+    def health(self, amount):
+        #self.health =min(amount, self.max_health)
+        pass
+
+    
+    
     #TODO: Update room object to initialize with item and pyt this func somewhere that makes sense
     def add_item_to_room(self, item):  # Add capability to add items to room
         '''
